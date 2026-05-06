@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+<div class="dashboard">
+    <h2>Admin Dashboard</h2>
+    <button class="logout-btn" onclick="location.href='/logout/'">Logout</button>
+</div>
+{% endblock %}
+
+<script src="{% static 'js/script.js' %}"></script>

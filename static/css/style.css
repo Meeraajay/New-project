@@ -1,0 +1,230 @@
+/* ===================== RESET ===================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* ===================== BODY ===================== */
+body {
+    background: linear-gradient(135deg, #eef2f7, #dfe9f3);
+    min-height: 100vh;
+}
+
+/* ===================== NAVBAR ===================== */
+.navbar {
+    background: #1e3a8a;
+    padding: 15px 40px;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-title {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* ===================== MAIN CONTAINER ===================== */
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+    flex-direction: column;
+}
+
+/* ===================== LOGIN CARD ===================== */
+.login-card {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    width: 400px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.login-card h2 {
+    margin-bottom: 25px;
+    color: #1e3a8a;
+}
+
+/* ===================== ROLE SELECTION ===================== */
+.role-selection {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.role-card {
+    flex: 1;
+    padding: 20px;
+    border-radius: 12px;
+    background: #f1f1f1;
+    cursor: pointer;
+    margin: 0 5px;
+    transition: 0.3s;
+    border: 2px solid transparent;
+}
+
+.role-card p {
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.role-card:hover {
+    transform: scale(1.05);
+}
+
+.role-card.active {
+    background: #262db4;
+    color: white;
+    border: 2px solid #2779cc;
+}
+
+/* ===================== FORM ===================== */
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #1e3a8a;
+    outline: none;
+}
+
+/* ===================== BUTTON ===================== */
+.btn {
+    width: 100%;
+    padding: 12px;
+    background: #2f4a8a;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #1e3a8a;
+}
+
+/* ===================== DASHBOARD ===================== */
+.dashboard {
+    text-align: center;
+    padding: 20px;
+}
+
+.dashboard h1 {
+    margin-bottom: 20px;
+    color: #1e3a8a;
+}
+
+/* ===================== APPLY BUTTON ===================== */
+.apply-btn {
+    display: inline-block;
+    padding: 12px 22px;
+    background: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.apply-btn:hover {
+    background: #218838;
+    transform: scale(1.05);
+}
+
+/* ===================== COURSE BOX ===================== */
+.course-box {
+    background: white;
+    padding: 25px;
+    margin: 25px auto;
+    width: 60%;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: left;
+}
+
+.course-box h2 {
+    margin-bottom: 15px;
+    color: #1e3a8a;
+}
+
+.course-box ul {
+    list-style: none;
+}
+
+.course-box li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    font-size: 15px;
+}
+
+/* ===================== LOGIN / REGISTER BUTTON ===================== */
+.logout-btn {
+    padding: 10px 20px;
+    background: crimson;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
+.cbsemarks-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.cbsemarks-table th {
+    background: #1e3a8a;
+    color: white;
+    padding: 10px;
+}
+
+.cbsemarks-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.cbsemarks-table input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+

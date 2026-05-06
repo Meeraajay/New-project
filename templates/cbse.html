@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="form-container">
+
+    <h2>CBSE Academic Details</h2><br><br>
+    <p>Enter marks out of 100</p>
+
+    <form id="cbseForm">
+
+        <table class="cbsemarks-table">
+
+            <tr>
+                <th>Subjects</th>
+                <th>Marks</th>
+            </tr>
+
+            <tr>
+                <td>Science</td>
+                <td><input type="number" name="science" min="0" max="100" required></td>
+            </tr>
+
+            <tr>
+                <td>Social Science</td>
+                <td><input type="number" name="social_science" min="0" max="100" required></td>
+            </tr>
+
+            <tr>
+                <td>Mathematics</td>
+                <td><input type="number" name="maths" min="0" max="100" required></td>
+            </tr>
+
+            <tr>
+                <td>English</td>
+                <td><input type="number" name="english" min="0" max="100" required></td>
+            </tr>
+
+            <tr>
+                <td>Language</td>
+                <td><input type="number" name="language" min="0" max="100" required></td>
+            </tr>
+
+        </table>
+
+        <button type="submit" class="btn">Save Details</button>
+
+    </form>
+
+</div>
+
+{% endblock %}

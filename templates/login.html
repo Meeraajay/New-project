@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="login-container">
+
+    <div class="login-card">
+        <h2>Select Role & Login</h2>
+
+        <!-- ✅ ADDED ID -->
+        <form id="loginForm" method="POST">
+            {% csrf_token %}
+
+            <!-- ROLE -->
+            <div class="role-selection">
+                <div class="role-card active" onclick="selectRole('student', this)">
+                    🎓
+                    <p>Student</p>
+                </div>
+
+                <div class="role-card" onclick="selectRole('admin', this)">
+                    👨‍💼
+                    <p>Admin</p>
+                </div>
+            </div>
+
+            <input type="hidden" name="role" id="role" value="student">
+
+            <!-- INPUTS -->
+            <div class="form-group">
+                <input type="text" name="username" placeholder="Username" required>
+            </div>
+
+            <div class="form-group">
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+
+            <button type="submit" class="btn">Login</button>
+
+        </form>
+    </div>
+
+</div>
+
+<!-- ROLE SCRIPT -->
+<script>
+function selectRole(role, element) {
+    document.getElementById("role").value = role;
+
+    document.querySelectorAll(".role-card").forEach(card => {
+        card.classList.remove("active");
+    });
+
+    element.classList.add("active");
+}
+</script>
+
+{% endblock %}
+
+<!-- ✅ SCRIPT MUST GO INSIDE BLOCK OR BASE -->
+<script src="{% static 'js/script.js' %}"></script>

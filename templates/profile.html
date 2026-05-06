@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="profile-card">
+    <h2>Complete Your Profile</h2>
+
+    <form id="profileForm">
+        {% csrf_token %}
+
+        <input type="text" name="name" placeholder="Enter Full Name" required>
+
+        <input type="date" name="dob" required>
+
+        <input type="text" name="mobile" placeholder="Enter Mobile Number" required>
+
+        <input type="email" name="email" placeholder="Enter Email Id" required>
+
+        <input type="text" name="register_number" placeholder="Enter Register Number" required>
+
+        <!-- BOARD SELECTION (VERY IMPORTANT) -->
+        <select name="board" required>
+            <option value="">Select Board</option>
+            <option value="CBSE">CBSE</option>
+            <option value="KERALA">Kerala State</option>
+        </select>
+
+        <button type="submit">Save Profile</button>
+    </form>
+
+</div>
+
+{% endblock %}

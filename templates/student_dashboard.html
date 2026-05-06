@@ -1,0 +1,46 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div class="dashboard">
+
+    <h1>
+        Welcome {{ student.name|default:request.user.username }}
+    </h1>
+
+    <!-- COURSES -->
+    <div class="course-box">
+        <h2>Courses Offered</h2>
+
+        <ul>
+            <li>Computer Science</li>
+            <li>Bio-Mathematics</li>
+            <li>Commerce</li>
+            <li>Humanities</li>
+        </ul>
+    </div>
+
+    <!-- APPLY BUTTON -->
+    <a href="{% url 'profile' %}" class="apply-btn">
+        Apply Now
+    </a>
+
+</div>
+
+</body>
+</html>
