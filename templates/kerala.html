@@ -1,0 +1,199 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="form-container">
+
+    <h2>Kerala State Academic Details</h2><br><br>
+    <p>Select grades for each subject</p>
+
+    <form method="POST" id="keralaForm">
+        {% csrf_token %}
+
+        <table class="cbsemarks-table">
+
+            <tr>
+                <th>Subjects</th>
+                <th>Grade</th>
+            </tr>
+
+            <tr>
+                <td>Language 1</td>
+                <td>
+                    <select name="language1" required>
+                        <option value="">Select</option>
+                        <option value="A+">A+</option>
+                        <option value="A">A</option>
+                        <option value="B+">B+</option>
+                        <option value="B">B</option>
+                        <option value="C+">C+</option>
+                        <option value="C">C</option>
+                        <option value="D+">D+</option>
+                        <option value="D">D</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Language 2</td>
+                <td>
+                    <select name="language2" required>
+                        <option value="">Select</option>
+                        <option value="A+">A+</option>
+                        <option value="A">A</option>
+                        <option value="B+">B+</option>
+                        <option value="B">B</option>
+                        <option value="C+">C+</option>
+                        <option value="C">C</option>
+                        <option value="D+">D+</option>
+                        <option value="D">D</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>English</td>
+                <td>
+                    <select name="english" required>
+                        <option value="">Select</option>
+                        <option value="A+">A+</option>
+                        <option value="A">A</option>
+                        <option value="B+">B+</option>
+                        <option value="B">B</option>
+                        <option value="C+">C+</option>
+                        <option value="C">C</option>
+                        <option value="D+">D+</option>
+                        <option value="D">D</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Hindi</td>
+                <td>
+                    <select name="hindi" required>
+                        <option value="">Select</option>
+                        <option value="A+">A+</option>
+                        <option value="A">A</option>
+                        <option value="B+">B+</option>
+                        <option value="B">B</option>
+                        <option value="C+">C+</option>
+                        <option value="C">C</option>
+                        <option value="D+">D+</option>
+                        <option value="D">D</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Social Science</td>
+                <td>
+                    <select name="social_science" required>
+                        <option value="">Select</option>
+                        <option value="A+">A+</option>
+                        <option value="A">A</option>
+                        <option value="B+">B+</option>
+                        <option value="B">B</option>
+                        <option value="C+">C+</option>
+                        <option value="C">C</option>
+                        <option value="D+">D+</option>
+                        <option value="D">D</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Physics</td>
+                <td>
+                    <select name="physics" required>
+                        <option value="">Select</option>
+                        <option value="A+">A+</option>
+                        <option value="A">A</option>
+                        <option value="B+">B+</option>
+                        <option value="B">B</option>
+                        <option value="C+">C+</option>
+                        <option value="C">C</option>
+                        <option value="D+">D+</option>
+                        <option value="D">D</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Chemistry</td>
+                <td>
+                    <select name="chemistry" required>
+                        <option value="">Select</option>
+                        <option value="A+">A+</option>
+                        <option value="A">A</option>
+                        <option value="B+">B+</option>
+                        <option value="B">B</option>
+                        <option value="C+">C+</option>
+                        <option value="C">C</option>
+                        <option value="D+">D+</option>
+                        <option value="D">D</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Biology</td>
+                <td>
+                    <select name="biology" required>
+                        <option value="">Select</option>
+                        <option value="A+">A+</option>
+                        <option value="A">A</option>
+                        <option value="B+">B+</option>
+                        <option value="B">B</option>
+                        <option value="C+">C+</option>
+                        <option value="C">C</option>
+                        <option value="D+">D+</option>
+                        <option value="D">D</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Mathematics</td>
+                <td>
+                    <select name="mathematics" required>
+                        <option value="">Select</option>
+                        <option value="A+">A+</option>
+                        <option value="A">A</option>
+                        <option value="B+">B+</option>
+                        <option value="B">B</option>
+                        <option value="C+">C+</option>
+                        <option value="C">C</option>
+                        <option value="D+">D+</option>
+                        <option value="D">D</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>IT</td>
+                <td>
+                    <select name="it" required>
+                        <option value="">Select</option>
+                        <option value="A+">A+</option>
+                        <option value="A">A</option>
+                        <option value="B+">B+</option>
+                        <option value="B">B</option>
+                        <option value="C+">C+</option>
+                        <option value="C">C</option>
+                        <option value="D+">D+</option>
+                        <option value="D">D</option>
+                    </select>
+                </td>
+            </tr>
+
+        </table>
+
+        <button type="submit" class="btn">Save Details</button>
+
+    </form>
+
+</div>
+
+{% endblock %}
+

@@ -7,7 +7,8 @@
     <h2>CBSE Academic Details</h2><br><br>
     <p>Enter marks out of 100</p>
 
-    <form id="cbseForm">
+    <form method="POST" id="cbseForm">
+        {% csrf_token %}
 
         <table class="cbsemarks-table">
 
@@ -39,6 +40,11 @@
             <tr>
                 <td>Language</td>
                 <td><input type="number" name="language" min="0" max="100" required></td>
+            </tr>
+
+            <tr>
+                <td>IT</td>
+                <td><input type="number" name="it" min="0" max="100" required></td>
             </tr>
 
         </table>

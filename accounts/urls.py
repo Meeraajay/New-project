@@ -12,4 +12,6 @@ urlpatterns = [
     path("save-profile/", views.save_profile, name="save_profile"),
     path("cbse/", views.cbse_view, name="cbse"),
     path("kerala/", views.kerala_view, name="kerala"),
+    path('extracurricular/', views.extracurricular, name='extracurricular'),
+    path('course-preference/',views.course_preference,name='course_preference'),
 ]

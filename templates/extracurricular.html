@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="form-container">
+
+    <h2>Extracurricular Activities</h2><br>
+
+    <form method="POST" enctype="multipart/form-data">
+
+        {% csrf_token %}
+
+        <table class="cbsemarks-table">
+
+            <tr>
+                <td>None</td>
+                <td>
+                    <input type="checkbox" name="none_activity" id="none_activity">
+                </td>
+            </tr>
+
+            <!-- NCC / NSS / Scouts / SPC -->
+
+            <tr>
+                <th colspan="2">NCC / NSS / Scouts / SPC</th>
+            </tr>
+
+            <tr>
+                <td>Participated</td>
+                <td>
+                    <input type="checkbox" name="ncc_nss_spc">
+                </td>
+            </tr>
+
+            <tr>
+                <td>Upload Certificate</td>
+                <td>
+                    <input type="file" name="ncc_certificate">
+                </td>
+            </tr>
+
+
+            <!-- Sports -->
+
+            <tr>
+                <th colspan="2">Sports Participation</th>
+            </tr>
+
+            <tr>
+                <td>District</td>
+                <td>
+                    <input type="checkbox" name="sports_district">
+                </td>
+            </tr>
+
+            <tr>
+                <td>State</td>
+                <td>
+                    <input type="checkbox" name="sports_state">
+                </td>
+            </tr>
+
+            <tr>
+                <td>National</td>
+                <td>
+                    <input type="checkbox" name="sports_national">
+                </td>
+            </tr>
+
+            <tr>
+                <td>Upload Certificate</td>
+                <td>
+                    <input type="file" name="sports_certificate">
+                </td>
+            </tr>
+
+
+            <!-- Youth Festival -->
+
+            <tr>
+                <th colspan="2">Youth Festival Participation</th>
+            </tr>
+
+            <tr>
+                <td>District</td>
+                <td>
+                    <input type="checkbox" name="youth_district">
+                </td>
+            </tr>
+
+            <tr>
+                <td>State</td>
+                <td>
+                    <input type="checkbox" name="youth_state">
+                </td>
+            </tr>
+
+            <tr>
+                <td>National</td>
+                <td>
+                    <input type="checkbox" name="youth_national">
+                </td>
+            </tr>
+
+            <tr>
+                <td>Upload Certificate</td>
+                <td>
+                    <input type="file" name="youth_certificate">
+                </td>
+            </tr>
+
+        </table>
+
+        <br>
+
+        <button type="submit" class="btn">
+            Save Details
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

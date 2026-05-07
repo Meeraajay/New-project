@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+</head>
+<body>
+
+<h2>Admission Results</h2>
+
+<table border="1">
+    <tr>
+        <th>Student</th>
+        <th>Course</th>
+        <th>Index Mark</th>
+        <th>Bonus</th>
+        <th>Final Score</th>
+        <th>Rank</th>
+    </tr>
+
+    {% for r in results %}
+    <tr>
+        <td>{{ r.student.name }}</td>
+        <td>{{ r.course }}</td>
+        <td>{{ r.index_mark }}</td>
+        <td>{{ r.bonus_mark }}</td>
+        <td>{{ r.final_score }}</td>
+        <td>{{ r.rank }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+</body>
+</html>
