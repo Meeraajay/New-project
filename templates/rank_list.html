@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Rank List</h2>
+
+<!-- =========================
+COURSE FILTER
+========================= -->
+
+<form method="GET">
+
+    <select name="course">
+
+        <option value="">All Courses</option>
+
+        <option value="Computer Science">
+            Computer Science
+        </option>
+
+        <option value="Bio-Mathematics">
+            Bio-Mathematics
+        </option>
+
+        <option value="Commerce">
+            Commerce
+        </option>
+
+        <option value="Humanities">
+            Humanities
+        </option>
+
+    </select>
+
+    <button type="submit">
+        Filter
+    </button>
+
+</form>
+
+<br>
+
+<!-- =========================
+RANK TABLE
+========================= -->
+
+<table border="1" cellpadding="10">
+
+    <tr>
+
+        <th>Rank</th>
+        <th>Student Name</th>
+        <th>Course</th>
+        <th>Preference</th>
+        <th>Index Mark</th>
+        <th>Bonus Mark</th>
+        <th>Stream Score</th>
+        <th>Final Score</th>
+
+    </tr>
+
+    {% for result in results %}
+
+    <tr>
+
+        <td>{{ result.rank }}</td>
+
+        <td>{{ result.student.name }}</td>
+
+        <td>{{ result.course }}</td>
+
+        <td>{{ result.preference_order }}</td>
+
+        <td>{{ result.index_mark }}</td>
+
+        <td>{{ result.bonus_mark }}</td>
+
+        <td>{{ result.stream_score }}</td>
+
+        <td>{{ result.final_score }}</td>
+
+    </tr>
+
+    {% empty %}
+
+    <tr>
+
+        <td colspan="8">
+            No students found.
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}

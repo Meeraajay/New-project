@@ -4,8 +4,14 @@
 
 <div class="form-container">
 
-    <center><h2>Course Preference</h2><br></center>
+    <center>
+        <h2>Course Preference</h2>
+        <br>
+    </center>
 
+    <!-- =========================
+         SAVE PREFERENCES FORM
+    ========================== -->
     <form method="POST">
 
         {% csrf_token %}
@@ -21,79 +27,37 @@
                 <td>Preference 1</td>
                 <td>
                     <select name="pref1" required>
-
                         <option value="">Select Course</option>
-
-                        <option value="Computer Science">
-                            Computer Science
-                        </option>
-
-                        <option value="Bio-Mathematics">
-                            Bio-Mathematics
-                        </option>
-
-                        <option value="Commerce">
-                            Commerce
-                        </option>
-
-                        <option value="Humanities">
-                            Humanities
-                        </option>
-
+                        <option value="Computer Science">Computer Science</option>
+                        <option value="Bio-Mathematics">Bio-Mathematics</option>
+                        <option value="Commerce">Commerce</option>
+                        <option value="Humanities">Humanities</option>
                     </select>
                 </td>
             </tr>
-            <br>
+
             <tr>
                 <td>Preference 2</td>
                 <td>
                     <select name="pref2" required>
-
                         <option value="">Select Course</option>
-
-                        <option value="Computer Science">
-                            Computer Science
-                        </option>
-
-                        <option value="Bio-Mathematics">
-                            Bio-Mathematics
-                        </option>
-
-                        <option value="Commerce">
-                            Commerce
-                        </option>
-
-                        <option value="Humanities">
-                            Humanities
-                        </option>
-
+                        <option value="Computer Science">Computer Science</option>
+                        <option value="Bio-Mathematics">Bio-Mathematics</option>
+                        <option value="Commerce">Commerce</option>
+                        <option value="Humanities">Humanities</option>
                     </select>
                 </td>
             </tr>
-            <br>
+
             <tr>
                 <td>Preference 3</td>
                 <td>
                     <select name="pref3" required>
-
                         <option value="">Select Course</option>
-
-                        <option value="Computer Science">
-                            Computer Science
-                        </option>
-
-                        <option value="Bio-Mathematics">
-                            Bio-Mathematics
-                        </option>
-
-                        <option value="Commerce">
-                            Commerce
-                        </option>
-
-                        <option value="Humanities">
-                            Humanities
-                        </option>
-
+                        <option value="Computer Science">Computer Science</option>
+                        <option value="Bio-Mathematics">Bio-Mathematics</option>
+                        <option value="Commerce">Commerce</option>
+                        <option value="Humanities">Humanities</option>
                     </select>
                 </td>
             </tr>
@@ -107,6 +71,29 @@
         </button>
 
     </form>
+
+    <br><br>
+
+    {% comment %} <!-- =========================
+         FINAL SUBMIT BUTTON
+    ========================== -->
+    <form method="POST" action="{% url 'submit_final' %}">
+
+        {% csrf_token %}
+
+        <center>
+
+            <button type="submit" class="btn btn-success">
+                Submit Final Application
+            </button>
+
+            <p style="margin-top:10px; color:gray;">
+                Once submitted, your application will be locked.
+            </p>
+
+        </center>
+
+    </form> {% endcomment %}
 
 </div>
 

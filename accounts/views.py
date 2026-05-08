@@ -7,6 +7,8 @@ from django.http import JsonResponse
 from django.contrib.auth.models import User
 from .models import Student, CBSEAcademicDetails, KeralaAcademicDetails, Extracurricular, CoursePreference
 from django.views.decorators.csrf import csrf_exempt
+from calculation.models import AdmissionResult
+
 
 # REGISTER
 def register_view(request):
@@ -114,10 +116,6 @@ def student_dashboard(request):
     })
 
 
-# ADMIN DASHBOARD
-@login_required
-def admin_dashboard(request):
-    return render(request, 'admin_dashboard.html')
 
 def profile_view(request):
     return render(request, "profile.html")
@@ -316,6 +314,7 @@ def extracurricular(request):
     return render(request, 'extracurricular.html')
 
 
+@login_required
 def course_preference(request):
 
     student = request.user.student
@@ -331,10 +330,55 @@ def course_preference(request):
             student=student,
 
             pref1=pref1,
+
             pref2=pref2,
+
             pref3=pref3
         )
 
         return redirect('student_dashboard')
 
-    return render(request, 'course_preference.html')
+    return render(
+        request,
+        'course_preference.html'
+    )
+
+
+# =========================
+# ADMIN DASHBOARD
+# =========================
+@login_required
+def admin_dashboard(request):
+
+    selected_course = request.GET.get('course')
+
+    # ONLY ALLOTTED RESULTS
+    results = AdmissionResult.objects.filter(
+        allotted=True
+    )
+
+    # FILTER
+    if selected_course:
+
+        results = results.filter(
+            course=selected_course
+        )
+
+    # ORDER
+    results = results.order_by(
+        'course',
+        'rank'
+    )
+
+    context = {
+
+        'results': results,
+
+        'selected_course': selected_course
+    }
+
+    return render(
+        request,
+        'admin_dashboard.html',
+        context
+    )

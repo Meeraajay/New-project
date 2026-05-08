@@ -23,6 +23,8 @@ class AdmissionResult(models.Model):
         choices=COURSE_CHOICES
     )
 
+    preference_order = models.IntegerField(default=1)
+
     index_mark = models.FloatField(default=0)
 
     bonus_mark = models.FloatField(default=0)
@@ -35,6 +37,8 @@ class AdmissionResult(models.Model):
         null=True,
         blank=True
     )
+
+    allotted = models.BooleanField(default=False)
 
     def __str__(self):
 
