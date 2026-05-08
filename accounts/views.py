@@ -325,18 +325,14 @@ def course_preference(request):
         pref2 = request.POST['pref2']
         pref3 = request.POST['pref3']
 
-        CoursePreference.objects.create(
-
+        CoursePreference.objects.update_or_create(
             student=student,
-
-            pref1=pref1,
-
-            pref2=pref2,
-
-            pref3=pref3
+            defaults={
+                "pref1": pref1,
+                "pref2": pref2,
+                "pref3": pref3
+            }
         )
-
-        return redirect('student_dashboard')
 
     return render(
         request,

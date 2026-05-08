@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .models import AdmissionResult
+from django.shortcuts import redirect
+
 
 from accounts.models import (
     Student,
@@ -236,3 +238,8 @@ def rank_list(request):
             'selected_course': selected_course
         }
     )
+
+
+def submit_final_application(request):
+    calculate_results()
+    return redirect('/')

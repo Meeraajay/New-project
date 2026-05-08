@@ -2,5 +2,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    # temporarily keep empty OR add real routes
+    path('submit-final/', views.submit_final_application, name='submit_final'),
 ]
