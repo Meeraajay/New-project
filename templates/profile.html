@@ -1,31 +1,73 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 
 <div class="profile-card">
-    <h2>Complete Your Profile</h2>
+
+    <h2>Complete Your Profile</h2><br>
 
     <form id="profileForm">
+
         {% csrf_token %}
 
-        <input type="text" name="name" placeholder="Enter Full Name" required>
+        <!-- NAME -->
+        <div class="form-group">
+            <input 
+                type="text"
+                name="name"
+                placeholder="Enter Full Name"
+                pattern="[A-Z][a-zA-Z\s]*"
+                title="Name should start with a capital letter"
+                required
+            >
+        </div>
 
-        <input type="date" name="dob" required>
+        <!-- DOB -->
+        <div class="form-group">
+            <input type="date" name="dob" id="dob" required>
+        </div>
 
-        <input type="text" name="mobile" placeholder="Enter Mobile Number" required>
+        <!-- MOBILE -->
+        <div class="form-group">
+            <input 
+                type="tel"
+                name="mobile"
+                placeholder="Enter Mobile Number"
+                pattern="[0-9]{10}"
+                maxlength="10"
+                minlength="10"
+                oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                title="Phone number must contain exactly 10 digits"
+                required
+            >
+        </div>
 
-        <input type="email" name="email" placeholder="Enter Email Id" required>
+        <!-- EMAIL -->
+        <div class="form-group">
+            <input 
+                type="email"
+                name="email"
+                placeholder="Enter Email Id"
+                title="Enter a valid email address"
+                required
+            >
+        </div>
 
-        <input type="text" name="register_number" placeholder="Enter Register Number" required>
 
-        <!-- BOARD SELECTION (VERY IMPORTANT) -->
-        <select name="board" required>
-            <option value="">Select Board</option>
-            <option value="CBSE">CBSE</option>
-            <option value="KERALA">Kerala State</option>
-        </select>
+        <!-- BOARD -->
+        <div class="form-group">
+            <select name="board" required>
+                <option value="">Select Board</option>
+                <option value="CBSE">CBSE</option>
+                <option value="KERALA">Kerala State</option>
+            </select>
+        </div>
 
-        <button type="submit">Save Profile</button>
+        <button type="submit" class="btn">
+            Save Profile
+        </button>
+
     </form>
 
 </div>

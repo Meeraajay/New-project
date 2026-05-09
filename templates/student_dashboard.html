@@ -1,20 +1,102 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>Student Dashboard</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-{% load static %}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Student Dashboard</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        /* ===================== RESET ===================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #eef2f7, #dfe9f3);
+            min-height: 100vh;
+        }
+
+        /* ===================== DASHBOARD ===================== */
+        .dashboard {
+            max-width: 1100px;
+            margin: 60px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .dashboard h1 {
+            margin-bottom: 30px;
+            color: #1e3a8a;
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        /* ===================== COURSE BOX ===================== */
+        .course-box {
+            background: white;
+            padding: 30px;
+            margin: 25px auto;
+            width: 70%;
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+            text-align: left;
+            transition: 0.3s;
+        }
+
+        .course-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+        }
+
+        .course-box h2 {
+            margin-bottom: 15px;
+            color: #1e3a8a;
+        }
+
+        .course-box ul {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .course-box li {
+            padding: 14px 12px;
+            margin-bottom: 8px;
+            border-radius: 10px;
+            background: #f5f7ff;
+            font-size: 15px;
+            font-weight: 500;
+            border: 1px solid #e6e9f5;
+            transition: 0.3s;
+        }
+
+        .course-box li:hover {
+            background: #e9efff;
+            transform: translateX(5px);
+        }
+
+        /* ===================== APPLY BUTTON ===================== */
+        .apply-btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background: linear-gradient(135deg, #28a745, #1f9d55);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            margin-top: 25px;
+            transition: 0.3s;
+            box-shadow: 0 8px 18px rgba(40, 167, 69, 0.3);
+        }
+
+        .apply-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(40, 167, 69, 0.4);
+        }
+
+    </style>
 </head>
+
 <body>
 
 <div class="dashboard">

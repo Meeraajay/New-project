@@ -168,3 +168,40 @@ if (profileForm) {
         }
     });
 }
+
+// ========================
+// DOB VALIDATION
+// ========================
+
+const dobInput = document.getElementById("dob");
+
+if (dobInput) {
+
+    // Prevent future dates
+    let today = new Date().toISOString().split("T")[0];
+    dobInput.max = today;
+
+    dobInput.addEventListener("change", function () {
+
+        let dob = new Date(this.value);
+        let today = new Date();
+
+        let age = today.getFullYear() - dob.getFullYear();
+
+        let monthDiff = today.getMonth() - dob.getMonth();
+
+        if (
+            monthDiff < 0 ||
+            (monthDiff === 0 && today.getDate() < dob.getDate())
+        ) {
+            age--;
+        }
+
+        if (age < 17) {
+
+            showMessage("Minimum age should be 17 years ❌", "error");
+
+            this.value = "";
+        }
+    });
+}

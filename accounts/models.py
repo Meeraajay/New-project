@@ -26,7 +26,6 @@ class Student(models.Model):
     dob = models.DateField(null=True, blank=True)
     mobile = models.CharField(max_length=15)
     email = models.EmailField(unique=True)
-    register_number = models.CharField(max_length=30, unique=True)
 
     # Academic system selector
     board = models.CharField(
