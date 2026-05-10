@@ -17,10 +17,33 @@
             min-height: 100vh;
         }
 
+        /* ===================== TOP BAR ===================== */
+        .top-bar {
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .logout-btn {
+            background: #dc3545;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: #bb2d3b;
+            transform: translateY(-2px);
+        }
+
         /* ===================== DASHBOARD ===================== */
         .dashboard {
             max-width: 1100px;
-            margin: 60px auto;
+            margin: 20px auto;
             padding: 20px;
             text-align: center;
         }
@@ -98,6 +121,13 @@
 </head>
 
 <body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+    <a href="{% url 'logout' %}" class="logout-btn">
+        Logout
+    </a>
+</div>
 
 <div class="dashboard">
 

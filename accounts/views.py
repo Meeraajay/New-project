@@ -116,11 +116,11 @@ def student_dashboard(request):
     })
 
 
-
+@login_required
 def profile_view(request):
     return render(request, "profile.html")
 
-
+@login_required
 def save_profile(request):
 
     if request.method == "POST":
@@ -168,7 +168,8 @@ def save_profile(request):
         "status": "error",
         "message": "Invalid request"
     })
-        
+
+@login_required        
 def cbse_view(request):
     if request.method == "POST":
 
@@ -218,7 +219,7 @@ grade_map = {
     "D": 25,
 }
 
-
+@login_required
 def kerala_view(request):
     if request.method == "POST":
 
@@ -279,7 +280,7 @@ def kerala_view(request):
     return render(request, 'kerala.html')
 
 
-
+@login_required
 def extracurricular(request):
 
     student = request.user.student
