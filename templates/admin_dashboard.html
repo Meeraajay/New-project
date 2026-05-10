@@ -7,19 +7,41 @@
 
     <h2>Admin Dashboard</h2>
 
-    <br><br>
+    <!-- =========================
+    STATISTICS CARDS
+    ========================= -->
 
-    <hr>
+    <div class="stats-container">
 
-    <h3>Admission Results</h3>
+        <div class="stat-card">
+            <h1>{{ total_students }}</h1>
+            <p>Total Students</p>
+        </div>
 
-    <br>
+        <div class="stat-card">
+            <h1>{{ allotted_students }}</h1>
+            <p>Allotted</p>
+        </div>
+
+        <div class="stat-card">
+            <h1>{{ pending_students }}</h1>
+            <p>Pending</p>
+        </div>
+
+    </div>
 
     <!-- =========================
-    COURSE FILTER
+    FILTER SECTION
     ========================= -->
 
     <form method="GET">
+
+        <input
+            type="text"
+            name="search"
+            placeholder="Search student..."
+            value="{{ search_query }}"
+        >
 
         <select name="course">
 
@@ -29,7 +51,7 @@
             {% if selected_course == "Computer Science" %}selected{% endif %}>
                 Computer Science
             </option>
-            
+
             <option value="Bio-Mathematics"
             {% if selected_course == "Bio-Mathematics" %}selected{% endif %}>
                 Bio-Mathematics
@@ -45,7 +67,6 @@
                 Humanities
             </option>
 
-
         </select>
 
         <button type="submit">
@@ -54,82 +75,72 @@
 
     </form>
 
-    <br>
-
     <!-- =========================
-    RESULT TABLE
+    RESULTS TABLE
     ========================= -->
 
-    <table border="1" cellpadding="8" cellspacing="0">
+    <div class="table-container">
 
-        <thead>
+        <table>
 
-            <tr>
+            <thead>
 
-                <th>Rank</th>
-                <th>Student</th>
-                <th>Course</th>
-                <th>Preference</th>
-                <th>Index Mark</th>
-                <th>Bonus Mark</th>
-                <th>Stream Score</th>
-                <th>Final Score</th>
+                <tr>
 
-            </tr>
+                    <th>Rank</th>
+                    <th>Student</th>
+                    <th>Course</th>
+                    <th>Preference</th>
+                    <th>Index Mark</th>
+                    <th>Bonus Mark</th>
+                    <th>Stream Score</th>
+                    <th>Final Score</th>
 
-        </thead>
+                </tr>
 
-        <tbody>
+            </thead>
 
-            {% for r in results %}
+            <tbody>
 
-            <tr>
+                {% for r in results %}
 
-                <td>{{ r.rank }}</td>
+                <tr>
 
-                <td>{{ r.student.name }}</td>
+                    <td>{{ r.rank }}</td>
+                    <td>{{ r.student.name }}</td>
+                    <td>{{ r.course }}</td>
+                    <td>{{ r.preference_order }}</td>
+                    <td>{{ r.index_mark }}</td>
+                    <td>{{ r.bonus_mark }}</td>
+                    <td>{{ r.stream_score }}</td>
+                    <td>{{ r.final_score }}</td>
 
-                <td>{{ r.course }}</td>
+                </tr>
 
-                <td>{{ r.preference_order }}</td>
+                {% empty %}
 
-                <td>{{ r.index_mark }}</td>
+                <tr>
 
-                <td>{{ r.bonus_mark }}</td>
+                    <td colspan="8">
+                        No results available
+                    </td>
 
-                <td>{{ r.stream_score }}</td>
+                </tr>
 
-                <td>{{ r.final_score }}</td>
+                {% endfor %}
 
-            </tr>
+            </tbody>
 
-            {% empty %}
+        </table>
 
-            <tr>
-
-                <td colspan="8">
-                    No results available
-                </td>
-
-            </tr>
-
-            {% endfor %}
-
-        </tbody>
-
-    </table>
+    </div>
 
     <br><br>
 
     <button class="logout-btn" onclick="location.href='/logout/'">
-
         Logout
-
     </button>
 
-    <br>
-
 </div>
-
 
 {% endblock %}

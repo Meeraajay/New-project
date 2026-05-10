@@ -359,11 +359,21 @@ def course_preference(request):
 def admin_dashboard(request):
 
     selected_course = request.GET.get('course')
+    search_query = request.GET.get('search')
 
     # ONLY ALLOTTED RESULTS
     results = AdmissionResult.objects.filter(
         allotted=True
     )
+
+
+    # SEARCH
+    if search_query:
+
+        results = results.filter(
+            student__name__icontains=search_query
+        )
+
 
     # FILTER
     if selected_course:
@@ -378,11 +388,29 @@ def admin_dashboard(request):
         'rank'
     )
 
+    # =========================
+# STATISTICS
+# =========================
+
+    total_students = Student.objects.count()
+
+    allotted_students = AdmissionResult.objects.filter(
+        allotted=True
+    ).values('student').distinct().count()
+
+    pending_students = total_students - allotted_students
+
+
+
     context = {
 
         'results': results,
-
-        'selected_course': selected_course
+        'selected_course': selected_course,
+        'search_query': search_query,
+        
+        'total_students': total_students,
+        'allotted_students': allotted_students,
+        'pending_students': pending_students,
     }
 
     return render(
