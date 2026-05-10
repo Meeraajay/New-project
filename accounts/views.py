@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from .models import Student, CBSEAcademicDetails, KeralaAcademicDetails, Extracurricular, CoursePreference
 from django.views.decorators.csrf import csrf_exempt
 from calculation.models import AdmissionResult
-
+from django.views.decorators.cache import never_cache
 
 # REGISTER
 def register_view(request):
@@ -106,6 +106,7 @@ def logout_view(request):
 
 
 # STUDENT DASHBOARD
+@never_cache
 @login_required
 def student_dashboard(request):
 
@@ -116,10 +117,13 @@ def student_dashboard(request):
     })
 
 
+@never_cache
 @login_required
 def profile_view(request):
     return render(request, "profile.html")
 
+
+@never_cache
 @login_required
 def save_profile(request):
 
@@ -169,6 +173,8 @@ def save_profile(request):
         "message": "Invalid request"
     })
 
+
+@never_cache
 @login_required        
 def cbse_view(request):
     if request.method == "POST":
@@ -219,6 +225,8 @@ grade_map = {
     "D": 25,
 }
 
+
+@never_cache
 @login_required
 def kerala_view(request):
     if request.method == "POST":
@@ -280,6 +288,8 @@ def kerala_view(request):
     return render(request, 'kerala.html')
 
 
+
+@never_cache
 @login_required
 def extracurricular(request):
 
@@ -315,6 +325,7 @@ def extracurricular(request):
     return render(request, 'extracurricular.html')
 
 
+@never_cache
 @login_required
 def course_preference(request):
 
