@@ -9,6 +9,11 @@ from .models import Student, CBSEAcademicDetails, KeralaAcademicDetails, Extracu
 from django.views.decorators.csrf import csrf_exempt
 from calculation.models import AdmissionResult
 from django.views.decorators.cache import never_cache
+from django.http import HttpResponse
+import pandas as pd
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
+from reportlab.lib import colors
+
 
 # REGISTER
 def register_view(request):
@@ -378,9 +383,7 @@ def admin_dashboard(request):
     # FILTER
     if selected_course:
 
-        results = results.filter(
-            course=selected_course
-        )
+        results = results.filter(course__iexact=selected_course)
 
     # ORDER
     results = results.order_by(
@@ -407,7 +410,7 @@ def admin_dashboard(request):
         'results': results,
         'selected_course': selected_course,
         'search_query': search_query,
-        
+
         'total_students': total_students,
         'allotted_students': allotted_students,
         'pending_students': pending_students,
@@ -418,3 +421,45 @@ def admin_dashboard(request):
         'admin_dashboard.html',
         context
     )
+
+
+def download_allotment(request):
+
+    course = request.GET.get('course')
+    search = request.GET.get('search')
+
+    results = AdmissionResult.objects.filter(allotted=True)
+
+    # FILTER BY COURSE
+    if course:
+        results = results.filter(course__iexact=course)
+
+    # FILTER BY SEARCH
+    if search:
+        results = results.filter(student__name__icontains=search)
+
+    data = []
+
+    for r in results:
+        data.append({
+            "Rank": r.rank,
+            "Student": r.student.name,
+            "Course": r.course,
+            "Preference": r.preference_order,
+            "Index Mark": r.index_mark,
+            "Bonus Mark": r.bonus_mark,
+            "Stream Score": r.stream_score,
+            "Final Score": r.final_score,
+        })
+
+    df = pd.DataFrame(data)
+
+    response = HttpResponse(
+        content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    )
+
+    response['Content-Disposition'] = 'attachment; filename=allotment.xlsx'
+
+    df.to_excel(response, index=False)
+
+    return response

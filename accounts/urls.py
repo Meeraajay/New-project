@@ -14,4 +14,6 @@ urlpatterns = [
     path("kerala/", views.kerala_view, name="kerala"),
     path('extracurricular/', views.extracurricular, name='extracurricular'),
     path('course-preference/',views.course_preference,name='course_preference'),
+    path('download-allotment/', views.download_allotment, name='download_allotment'),
+
 ]

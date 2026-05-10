@@ -3,109 +3,74 @@
 
 {% block content %}
 
-<div class="dashboard">
+<div class="admin-wrapper">
 
-    <h2>Admin Dashboard</h2>
+    <h2 class="title">Admin Dashboard</h2>
+    <br><br>
 
-    <!-- =========================
-    STATISTICS CARDS
-    ========================= -->
+    {% comment %} <!-- DOWNLOAD BUTTON -->
+    <div class="top-actions">
+        <a href="{% url 'download_allotment' %}" class="download-btn">
+            Download Allotment List
+        </a>
+    </div> {% endcomment %}
 
-    <div class="stats-container">
+    <!-- STATS -->
+    <div class="stats">
 
-        <div class="stat-card">
+        <div class="card blue">
             <h1>{{ total_students }}</h1>
             <p>Total Students</p>
         </div>
 
-        <div class="stat-card">
+        <div class="card green">
             <h1>{{ allotted_students }}</h1>
             <p>Allotted</p>
         </div>
 
-        <div class="stat-card">
+        <div class="card orange">
             <h1>{{ pending_students }}</h1>
             <p>Pending</p>
         </div>
 
     </div>
 
-    <!-- =========================
-    FILTER SECTION
-    ========================= -->
+    <!-- FILTER -->
+    <form method="GET" class="filter">
 
-    <form method="GET">
-
-        <input
-            type="text"
-            name="search"
-            placeholder="Search student..."
-            value="{{ search_query }}"
-        >
+        <input type="text" name="search" placeholder="Search student..." value="{{ search_query }}">
 
         <select name="course">
-
             <option value="">All Courses</option>
-
-            <option value="Computer Science"
-            {% if selected_course == "Computer Science" %}selected{% endif %}>
-                Computer Science
-            </option>
-
-            <option value="Bio-Mathematics"
-            {% if selected_course == "Bio-Mathematics" %}selected{% endif %}>
-                Bio-Mathematics
-            </option>
-
-            <option value="Commerce"
-            {% if selected_course == "Commerce" %}selected{% endif %}>
-                Commerce
-            </option>
-
-            <option value="Humanities"
-            {% if selected_course == "Humanities" %}selected{% endif %}>
-                Humanities
-            </option>
-
+            <option value="Computer Science">Computer Science</option>
+            <option value="Bio-Mathematics">Bio-Mathematics</option>
+            <option value="Commerce">Commerce</option>
+            <option value="Humanities">Humanities</option>
         </select>
 
-        <button type="submit">
-            Filter
-        </button>
+        <button type="submit">Filter</button>
 
     </form>
 
-    <!-- =========================
-    RESULTS TABLE
-    ========================= -->
-
-    <div class="table-container">
-
+    <!-- TABLE -->
+    <div class="table-box">
         <table>
-
             <thead>
-
                 <tr>
-
                     <th>Rank</th>
                     <th>Student</th>
                     <th>Course</th>
                     <th>Preference</th>
-                    <th>Index Mark</th>
-                    <th>Bonus Mark</th>
-                    <th>Stream Score</th>
-                    <th>Final Score</th>
-
+                    <th>Index</th>
+                    <th>Bonus</th>
+                    <th>Stream</th>
+                    <th>Final</th>
                 </tr>
-
             </thead>
 
             <tbody>
-
                 {% for r in results %}
-
                 <tr>
-
                     <td>{{ r.rank }}</td>
                     <td>{{ r.student.name }}</td>
                     <td>{{ r.course }}</td>
@@ -114,33 +79,137 @@
                     <td>{{ r.bonus_mark }}</td>
                     <td>{{ r.stream_score }}</td>
                     <td>{{ r.final_score }}</td>
-
                 </tr>
-
-                {% empty %}
-
-                <tr>
-
-                    <td colspan="8">
-                        No results available
-                    </td>
-
-                </tr>
-
                 {% endfor %}
 
-            </tbody>
-
-        </table>
-
+    <div class="top-actions">
+        <a href = "{% url 'download_allotment' %}?course={{ selected_course }}&search={{ search_query }}" class="download-btn">
+            Download Excel List
+        </a>
     </div>
-
+            </tbody>
+        </table>
     <br><br>
-
     <button class="logout-btn" onclick="location.href='/logout/'">
         Logout
     </button>
 
+    </div>
+
+
 </div>
+
+<style>
+.admin-wrapper{
+    width:95%;
+    max-width:1300px;
+    margin:30px auto;
+}
+
+.title{
+    text-align:center;
+    font-size:36px;
+    {% comment %} margin-bottom:20px; {% endcomment %}
+    margin: auto;
+
+}
+
+/* BUTTON */
+.top-actions{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.download-btn{
+    display:inline-block;
+    padding:12px 22px;
+    background:#16a34a;
+    color:white;
+    text-decoration:none;
+    border-radius:10px;
+    font-weight:600;
+}
+
+/* STATS */
+.stats{
+    display:flex;
+    gap:20px;
+    justify-content:center;
+    margin-bottom: 40pxpx;
+    flex-wrap:wrap;
+}
+
+.card{
+    width:200px;
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+    color:white;
+}
+
+.card h1{
+    font-size:40px;
+    margin-bottom:5px;
+    color:white;
+}
+
+.blue{ background:#2563eb; }
+.green{ background:#16a34a; }
+.orange{ background:#f59e0b; }
+
+/* FILTER */
+.filter{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    margin:20px 0;
+    flex-wrap:wrap;
+}
+
+.filter input,
+.filter select{
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+.filter button{
+    padding:10px 18px;
+    background:#1d4ed8;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* TABLE */
+.table-box{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+th{
+    background:#111827;
+    color:white;
+    padding:12px;
+}
+
+td{
+    padding:12px;
+    text-align:center;
+    border-bottom:1px solid #eee;
+}
+
+tr:hover{
+    background:#f3f4f6;
+}
+</style>
 
 {% endblock %}
