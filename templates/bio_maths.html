@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bio-Mathematics</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Segoe UI',sans-serif;
+        }
+
+        body{
+            background:#f4f7fb;
+            color:#333;
+        }
+
+        /* HERO */
+
+        .hero{
+            height:350px;
+            background:url('/static/images/bio_banner.jpg');
+            background-size:cover;
+            background-position:center;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            position:relative;
+        }
+
+        .hero::after{
+            content:'';
+            position:absolute;
+            inset:0;
+            background:rgba(0,0,0,0.5);
+        }
+
+        .hero-content{
+            position:relative;
+            z-index:2;
+            color:white;
+            text-align:center;
+        }
+
+        .hero-content h1{
+            font-size:52px;
+            margin-bottom:15px;
+        }
+
+        .hero-content p{
+            font-size:18px;
+        }
+
+        /* CONTAINER */
+
+        .container{
+            width:85%;
+            margin:auto;
+            padding:50px 0;
+        }
+
+        /* SECTION */
+
+        .section{
+            background:white;
+            padding:35px;
+            margin-bottom:30px;
+            border-radius:18px;
+            box-shadow:0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .section h2{
+            color:#166534;
+            margin-bottom:20px;
+        }
+
+        .section p{
+            line-height:1.8;
+            color:#555;
+        }
+
+        /* SUBJECTS */
+
+        .subjects{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+            gap:18px;
+            margin-top:20px;
+        }
+
+        .subject-card{
+            background:#ecfdf5;
+            padding:20px;
+            border-radius:12px;
+            text-align:center;
+            font-weight:600;
+            transition:0.3s;
+        }
+
+        .subject-card:hover{
+            transform:translateY(-5px);
+            background:#d1fae5;
+        }
+
+        /* GALLERY */
+
+        .gallery{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            gap:20px;
+            margin-top:20px;
+        }
+
+        .gallery img{
+            width:100%;
+            height:220px;
+            object-fit:cover;
+            border-radius:15px;
+            transition:0.3s;
+        }
+
+        .gallery img:hover{
+            transform:scale(1.03);
+        }
+
+        /* BUTTON */
+
+        .back-btn{
+            display:inline-block;
+            padding:12px 24px;
+            background:#166534;
+            color:white;
+            text-decoration:none;
+            border-radius:10px;
+            margin-top:20px;
+            transition:0.3s;
+        }
+
+        .back-btn:hover{
+            background:#14532d;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- HERO -->
+
+    <div class="hero">
+
+        <div class="hero-content">
+
+            <h1>Bio-Mathematics</h1>
+
+            <p>
+                Combining science and mathematics for future innovators
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- CONTENT -->
+
+    <div class="container">
+
+        <!-- OVERVIEW -->
+
+        <div class="section">
+
+            <h2>Course Overview</h2>
+
+            <p>
+                The Bio-Mathematics stream combines Biology,
+                Mathematics, Physics and Chemistry to prepare
+                students for careers in medicine, engineering,
+                biotechnology and scientific research. The course
+                develops analytical thinking and scientific skills
+                essential for competitive examinations and higher studies.
+            </p>
+
+        </div>
+
+        <!-- SUBJECTS -->
+
+        <div class="section">
+
+            <h2>Main Subjects</h2>
+
+            <div class="subjects">
+
+                <div class="subject-card">
+                    Biology
+                </div>
+
+                <div class="subject-card">
+                    Mathematics
+                </div>
+
+                <div class="subject-card">
+                    Physics
+                </div>
+
+                <div class="subject-card">
+                    Chemistry
+                </div>
+
+                <div class="subject-card">
+                    Biotechnology
+                </div>
+
+                <div class="subject-card">
+                    Environmental Science
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- FACILITIES -->
+
+        <div class="section">
+
+            <h2>Facilities</h2>
+
+            <p>
+                Students have access to advanced science laboratories,
+                smart classrooms, research activities, science exhibitions,
+                medical entrance coaching and interactive learning sessions
+                guided by experienced faculty members.
+            </p>
+
+        </div>
+
+
+        <!-- ELIGIBILITY -->
+
+        <div class="section">
+
+            <h2>Eligibility Criteria</h2>
+
+            <p>
+                Students applying for the Bio-Mathematics stream
+                should have successfully completed 10th standard
+                with good marks in Science and Mathematics.
+            </p>
+
+        </div>
+
+        <!-- CAREERS -->
+
+        <div class="section">
+
+            <h2>Career Opportunities</h2>
+
+            <p>
+                The Bio-Mathematics stream opens pathways to careers
+                in Medicine, Engineering, Biotechnology, Pharmacy,
+                Agriculture, Nursing and Scientific Research. Students
+                can also pursue professional courses and higher education
+                in various science-related fields.
+            </p>
+
+        </div>
+
+        <!-- GALLERY -->
+
+        <div class="section">
+
+            <h2>Department Gallery</h2>
+
+            <div class="gallery">
+
+                <img src="/static/images/bio1.jpg">
+
+                <img src="/static/images/bio2.jpg">
+
+                <img src="/static/images/bio3.jpg">
+
+                <img src="/static/images/bio4.jpg">
+
+            </div>
+
+        </div>
+
+        <!-- BACK -->
+
+        <a href="{% url 'student_dashboard' %}" class="back-btn">
+            Back to Dashboard
+        </a>
+
+    </div>
+
+</body>
+</html>
