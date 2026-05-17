@@ -115,7 +115,7 @@ def logout_view(request):
 @login_required
 def student_dashboard(request):
 
-    student = Student.objects.filter(user=request.user).first()
+    student, created = Student.objects.get_or_create(user=request.user)
 
     return render(request, "student_dashboard.html", {
         "student": student
@@ -125,12 +125,19 @@ def student_dashboard(request):
 @never_cache
 @login_required
 def profile_view(request):
+    # 🔒 LOCK CHECK
+    if request.user.student.status == "submitted":
+        return render(request, "already_submitted.html")
+        
     return render(request, "profile.html")
 
 
 @never_cache
 @login_required
 def save_profile(request):
+
+    if request.user.student.status == "submitted":
+        return JsonResponse({"status": "error", "message": "Application already submitted"})
 
     if request.method == "POST":
 
@@ -182,6 +189,11 @@ def save_profile(request):
 @never_cache
 @login_required        
 def cbse_view(request):
+
+    if request.user.student.status == "submitted":
+        return render(request, "already_submitted.html")
+    
+
     if request.method == "POST":
 
         science = float(request.POST['science'])
@@ -234,6 +246,11 @@ grade_map = {
 @never_cache
 @login_required
 def kerala_view(request):
+
+    if request.user.student.status == "submitted":
+        return render(request, "already_submitted.html")
+    
+
     if request.method == "POST":
 
         language1 = request.POST['language1']
@@ -298,6 +315,9 @@ def kerala_view(request):
 @login_required
 def extracurricular(request):
 
+    if request.user.student.status == "submitted":
+        return render(request, "already_submitted.html")
+
     student = request.user.student
 
     if request.method == "POST":
@@ -334,6 +354,9 @@ def extracurricular(request):
 @login_required
 def course_preference(request):
 
+    if request.user.student.status == "submitted":
+        return render(request, "already_submitted.html")
+
     student = request.user.student
 
     if request.method == "POST":
@@ -351,10 +374,11 @@ def course_preference(request):
             }
         )
 
-    return render(
-        request,
-        'course_preference.html'
-    )
+        # ✅ Show success message and stay on same page
+        messages.success(request, "Preferences saved successfully!")
+        return redirect('course_preference')
+
+    return render(request, 'course_preference.html')
 
 
 # =========================
@@ -463,3 +487,14 @@ def download_allotment(request):
     df.to_excel(response, index=False)
 
     return response
+
+
+@login_required
+def apply_now(request):
+
+    student, created = Student.objects.get_or_create(user=request.user)
+
+    if student.status == "submitted":
+        return render(request, "already_submitted.html")
+
+    return redirect('profile')

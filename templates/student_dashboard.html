@@ -275,9 +275,21 @@
 
         <!-- APPLY BUTTON -->
 
-        <a href="{% url 'profile' %}" class="apply-btn">
-            Apply Now
-        </a>
+        {% if student.status == "submitted" %}
+
+            <div style="margin-top:25px;">
+                <h3 style="color:green;">
+                    ✅ Application Already Submitted
+                </h3>
+            </div>
+
+        {% else %}
+
+            <a href="{% url 'apply_now' %}" class="apply-btn">
+                Apply Now
+            </a>
+
+        {% endif %}
 
     </div>
 

@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .models import AdmissionResult
 from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 from accounts.models import (
@@ -240,6 +242,22 @@ def rank_list(request):
     )
 
 
+@login_required
 def submit_final_application(request):
+    
+    student = request.user.student
+    
+    # ✅ Check if preferences exist (safety check)
+    if not CoursePreference.objects.filter(student=student).exists():
+        messages.error(request, "Please save your course preferences first!")
+        return redirect('course_preference')
+    
+    # ✅ LOCK APPLICATION (This is the missing part!)
+    student.status = "submitted"
+    student.save()
+    
+    # ✅ Now calculate results
     calculate_results()
-    return redirect('/')
+    
+    messages.success(request, "Application submitted successfully!")
+    return redirect('student_dashboard')  # Or wherever you want
